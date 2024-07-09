@@ -27,7 +27,7 @@ async def get_user(db: SessionDep, user_id: int) -> UserOut:
     try:
         user = await read_user_by_id(db=db, user_id=user_id)
     except EntityDoesNotExist:
-        raise http_404_exc_id_not_found_request(id=user_id)
+        raise http_404_exc_id_not_found_request(user_id == user_id)
 
     return user
 
@@ -38,10 +38,10 @@ async def update_user(
 ) -> UserOut:
     try:
         updated_user = await update_user_by_id(
-            db=db, id=current_user.id, user_update=user_update
+            db=db, user_id=current_user.id, user_update=user_update
         )
     except EntityDoesNotExist:
-        raise await http_404_exc_id_not_found_request(id=current_user.id)
+        raise await http_404_exc_id_not_found_request(user_id=current_user.id)
 
     return updated_user
 
@@ -49,8 +49,8 @@ async def update_user(
 @router.delete("/", status_code=status.HTTP_200_OK)
 async def delete_user(db: SessionDep, current_user: CurrentUser) -> dict[str, str]:
     try:
-        deletion_result = await delete_user_by_id(db=db, id=current_user.id)
+        deletion_result = await delete_user_by_id(db=db, user_id=current_user.id)
     except EntityDoesNotExist:
-        raise await http_404_exc_id_not_found_request(id=current_user.id)
+        raise await http_404_exc_id_not_found_request(user_id=current_user.id)
 
     return {"notification": deletion_result}

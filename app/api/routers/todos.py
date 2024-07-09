@@ -28,7 +28,7 @@ async def get_todo(db: SessionDep, current_user: CurrentUser, todo_id: int) -> T
             db=db, current_user_id=current_user.id, todo_id=todo_id
         )
     except EntityDoesNotExist:
-        raise await http_404_exc_todo_id_not_found_request(id=id)
+        raise await http_404_exc_todo_id_not_found_request(todo_id=todo_id)
     except AccessDenied:
         raise await http_403_exc_access_denied_request()
 
@@ -63,7 +63,7 @@ async def update_todo(
             db=db, current_user_id=current_user.id, todo_id=todo_id
         )
     except EntityDoesNotExist:
-        raise http_404_exc_todo_id_not_found_request
+        raise http_404_exc_todo_id_not_found_request(todo_id=todo_id)
     except AccessDenied:
         raise http_403_exc_access_denied_request()
 
@@ -75,7 +75,7 @@ async def delete_todo(db: SessionDep, current_user: CurrentUser, todo_id: int) -
     try:
         await delete_todo_by_id(db=db, current_user_id=current_user.id, todo_id=todo_id)
     except EntityDoesNotExist:
-        raise http_404_exc_todo_id_not_found_request
+        raise http_404_exc_todo_id_not_found_request(todo_id=todo_id)
     except AccessDenied:
         raise http_403_exc_access_denied_request()
 

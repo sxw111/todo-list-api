@@ -10,12 +10,12 @@ def http_400_signup_credentials_details() -> str:
     return "Signup failed!"
 
 
-def http_404_id_details(id: int) -> str:
-    return f"User with id `{id}` does not exist!"
+def http_404_id_details(user_id: int) -> str:
+    return f"User with id `{user_id}` does not exist!"
 
 
-def http_404_todo_id_details(id: int) -> str:
-    return f"Todo with id {id} does not exist!"
+def http_404_todo_id_details(todo_id: int) -> str:
+    return f"Todo with id {todo_id} does not exist!"
 
 
 def http_404_todos_details() -> str:
