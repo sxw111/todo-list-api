@@ -59,7 +59,9 @@ async def read_users(db: AsyncSession) -> list[User]:
     return users
 
 
-async def update_user_by_id(db: AsyncSession, user_id: int, user_update: UserUpdate) -> User:
+async def update_user_by_id(
+    db: AsyncSession, user_id: int, user_update: UserUpdate
+) -> User:
     new_user_data = user_update.model_dump()
 
     result = await db.execute(select(User).where(User.id == user_id))
