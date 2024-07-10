@@ -1,3 +1,4 @@
 # todo-list-api
 
-Simple FastAPI project with async postgresql, sqlalchemy, alembic and docker
+## FastAPI Project with Async PostgreSQL, SQLAlchemy, Alembic, Docker, and Pytest
+
