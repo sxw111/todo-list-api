@@ -1,8 +1,8 @@
 from datetime import datetime
-import enum
+from enum import Enum
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import func, TIMESTAMP, Text, ForeignKey, Enum
+from sqlalchemy import func, TIMESTAMP, Text, ForeignKey
 
 from app.core.db import Base
 
@@ -26,13 +26,13 @@ class User(Base):
     todos: Mapped[list["ToDo"]] = relationship()
 
 
-class ToDoStatus(enum.Enum):
+class ToDoStatus(str, Enum):
     TODO = "TODO"
     IN_PROGRESS = "IN_PROGRESS"
     COMPLETED = "COMPLETED"
 
 
-class ToDoPriority(enum.Enum):
+class ToDoPriority(str, Enum):
     LOW = "LOW"
     MEDIUM = "MEDIUM"
     HIGH = "HIGH"
