@@ -22,12 +22,12 @@ async def signup(db: SessionDep, user: UserCreate) -> UserOut:
     try:
         await is_username_taken(db=db, username=user.username)
     except EntityAlreadyExists:
-        raise http_400_exc_bad_username_request(username=user.username)
+        raise await http_400_exc_bad_username_request(username=user.username)
 
     try:
         await is_email_taken(db=db, email=user.email)
     except EntityAlreadyExists:
-        raise http_400_exc_bad_email_request(email=user.email)
+        raise await http_400_exc_bad_email_request(email=user.email)
 
     new_user = await create_user(db=db, user=user)
 

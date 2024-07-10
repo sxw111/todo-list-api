@@ -27,7 +27,7 @@ async def get_user(db: SessionDep, user_id: int) -> UserOut:
     try:
         user = await read_user_by_id(db=db, user_id=user_id)
     except EntityDoesNotExist:
-        raise http_404_exc_id_not_found_request(user_id == user_id)
+        raise await http_404_exc_id_not_found_request(user_id == user_id)
 
     return user
 
