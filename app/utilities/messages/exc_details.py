@@ -19,7 +19,7 @@ def http_404_todo_id_details(todo_id: int) -> str:
 
 
 def http_404_todos_details() -> str:
-    return f"Currently, you don't have any todos!"
+    return "Currently, you don't have any todos!"
 
 
 def http_403_access_denied_details() -> str:
