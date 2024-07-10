@@ -1,11 +1,11 @@
+from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import update
 
 from app.models.db.models import ToDo
 from app.models.schemas.todo import ToDoCreate, ToDoUpdate
-from app.utilities.exceptions.database import EntityDoesNotExist
 from app.utilities.exceptions.access import AccessDenied
+from app.utilities.exceptions.database import EntityDoesNotExist
 
 
 async def create_new_todo(

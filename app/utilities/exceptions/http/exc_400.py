@@ -1,9 +1,9 @@
 from fastapi import HTTPException, status
 
 from app.utilities.messages.exc_details import (
-    http_400_username_details,
     http_400_email_details,
     http_400_signup_credentials_details,
+    http_400_username_details,
 )
 
 
