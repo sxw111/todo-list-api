@@ -18,8 +18,22 @@ pytest = "^8.2.2"
 pytest-asyncio = "^0.23.7"
 flake8 = "^7.1.0"
 
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.black]
+color=true
+exclude = '''
+    /(
+        \.git
+        | \.mypy_cache
+        | \.venv
+        | alembic/versions
+    )/
+'''
+include = '\.pyi?$'
+line-length = 88
