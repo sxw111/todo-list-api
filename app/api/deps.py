@@ -27,7 +27,7 @@ SessionDep = Annotated[AsyncSession, Depends(get_db)]
 async def verify_access_token(token: str, credentials_exception) -> TokenData:
     try:
         payload = jwt.decode(
-            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
+            token, settings.ACCESS_SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
         user_id = payload.get("user_id")
         if user_id is None:
