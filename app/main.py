@@ -8,6 +8,6 @@ app = FastAPI()
 app.include_router(api_router)
 
 
-@app.get("/")
-async def root():
-    return {"server is running": "OK"}
+@app.get("/healthcheck", include_in_schema=False)
+async def healthcheck() -> dict[str, str]:
+    return {"status": "ok"}
