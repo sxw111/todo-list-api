@@ -21,7 +21,8 @@ async def create_new_todo(
 
 
 async def read_todo_by_id(db: AsyncSession, current_user_id: int, todo_id: int) -> ToDo:
-    result = await db.execute(select(ToDo).where(ToDo.id == todo_id))
+    stmt = select(ToDo).where(ToDo.id == todo_id)
+    result = await db.execute(statement=stmt)
     todo = result.scalar_one_or_none()
 
     if not todo:
@@ -34,7 +35,8 @@ async def read_todo_by_id(db: AsyncSession, current_user_id: int, todo_id: int) 
 
 
 async def read_todos(db: AsyncSession, current_user_id: int) -> list[ToDo]:
-    result = await db.execute(select(ToDo).where(ToDo.owner_id == current_user_id))
+    stmt = select(ToDo).where(ToDo.owner_id == current_user_id)
+    result = await db.execute(statement=stmt)
     todos = result.scalars().all()
 
     if not todos:
@@ -48,7 +50,8 @@ async def update_todo_by_id(
 ) -> ToDo:
     new_todo_data = todo_update.model_dump()
 
-    result = await db.execute(select(ToDo).where(ToDo.id == todo_id))
+    stmt = select(ToDo).where(ToDo.id == todo_id)
+    result = await db.execute(statement=stmt)
     update_todo = result.scalar_one_or_none()
 
     if not update_todo:

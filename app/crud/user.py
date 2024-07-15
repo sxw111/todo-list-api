@@ -23,7 +23,8 @@ async def create_user(db: AsyncSession, user: UserCreate) -> User:
 
 
 async def read_user_by_id(db: AsyncSession, user_id: int) -> User:
-    result = await db.execute(select(User).where(User.id == user_id))
+    stmt = select(User).where(User.id == user_id)
+    result = await db.execute(statement=stmt)
     user = result.scalar_one_or_none()
 
     if not user:
@@ -33,7 +34,8 @@ async def read_user_by_id(db: AsyncSession, user_id: int) -> User:
 
 
 async def read_user_by_username(db: AsyncSession, username: str) -> User:
-    result = await db.execute(select(User).where(User.username == username))
+    stmt = select(User).where(User.username == username)
+    result = await db.execute(statement=stmt)
     user = result.scalar_one_or_none()
 
     if not user:
@@ -43,7 +45,8 @@ async def read_user_by_username(db: AsyncSession, username: str) -> User:
 
 
 async def read_user_by_email(db: AsyncSession, email: EmailStr) -> User:
-    result = await db.execute(select(User).where(User.email == email))
+    stmt = select(User).where(User.email == email)
+    result = await db.execute(statement=stmt)
     user = result.scalar_one_or_none()
 
     if not user:
@@ -53,7 +56,8 @@ async def read_user_by_email(db: AsyncSession, email: EmailStr) -> User:
 
 
 async def read_users(db: AsyncSession) -> list[User]:
-    result = await db.execute(select(User))
+    stmt = select(User)
+    result = await db.execute(statement=stmt)
     users = result.scalars().all()
 
     return users
@@ -64,7 +68,8 @@ async def update_user_by_id(
 ) -> User:
     new_user_data = user_update.model_dump()
 
-    result = await db.execute(select(User).where(User.id == user_id))
+    stmt = select(User).where(User.id == user_id)
+    result = await db.execute(statement=stmt)
     update_user = result.scalar_one_or_none()
 
     if not update_user:
@@ -90,7 +95,8 @@ async def update_user_by_id(
 
 
 async def delete_user_by_id(db: AsyncSession, user_id: int) -> str:
-    result = await db.execute(select(User).where(User.id == user_id))
+    stmt = select(User).where(User.id == user_id)
+    result = await db.execute(statement=stmt)
     delete_user = result.scalar_one_or_none()
 
     if not delete_user:
@@ -103,7 +109,8 @@ async def delete_user_by_id(db: AsyncSession, user_id: int) -> str:
 
 
 async def is_email_taken(db: AsyncSession, email: EmailStr) -> bool:
-    result = await db.execute(select(User).where(User.email == email))
+    stmt = select(User).where(User.email == email)
+    result = await db.execute(statement=stmt)
     user = result.scalar_one_or_none()
 
     if user:
@@ -113,7 +120,8 @@ async def is_email_taken(db: AsyncSession, email: EmailStr) -> bool:
 
 
 async def is_username_taken(db: AsyncSession, username: str) -> bool:
-    result = await db.execute(select(User).where(User.username == username))
+    stmt = select(User).where(User.username == username)
+    result = await db.execute(statement=stmt)
     user = result.scalar_one_or_none()
 
     if user:
