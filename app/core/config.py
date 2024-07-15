@@ -4,11 +4,8 @@ import decouple
 
 
 class Settings(BaseSettings):
-    TITLE: str = "Todo list application"
-    VERSION: str = "0.1.0"
-    TIMEZONE: str = "UTC"
-    DESCRIPTION: str | None = None
-    DEBUG: bool = False
+    TITLE: str = "Todo List Application"
+    VERSION: str = "0.0.1"
 
     DATABASE_URL: PostgresDsn
 
