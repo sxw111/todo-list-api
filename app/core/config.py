@@ -1,13 +1,20 @@
 from pydantic import PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
-import decouple
 
 
 class Settings(BaseSettings):
     TITLE: str = "Todo List Application"
     VERSION: str = "0.0.1"
+    TIMEZONE: str = "UTC"
+    DESCRIPTION: str | None = None
+    DEBUG: bool = False
+
+    DOCS_URL: str = "/docs"
+    OPENAPI_URL: str = "/openapi.json"
+    REDOC_URL: str = "/redoc"
 
     DATABASE_URL: PostgresDsn
+    DATABASE_URL_TEST: PostgresDsn
 
     ACCESS_SECRET_KEY: str
     ALGORITHM: str
@@ -15,7 +22,7 @@ class Settings(BaseSettings):
     REFRESH_SECRET_KEY: str
     REFRESH_TOKEN_EXPIRE_DAYS: int
 
-    IS_ALLOWED_CREDENTIALS: bool = decouple.config("IS_ALLOWED_CREDENTIALS", cast=bool)
+    IS_ALLOWED_CREDENTIALS: bool = True
     ALLOWED_ORIGINS: list[str] = [
         "http://localhost:3000",
         "http://0.0.0.0:3000",
@@ -30,6 +37,18 @@ class Settings(BaseSettings):
     ALLOWED_HEADERS: list[str] = ["*"]
 
     model_config = SettingsConfigDict(env_file=".env", extra="allow")
+
+    @property
+    def set_backend_app_attributes(self) -> dict[str, str | bool | None]:
+        return {
+            "title": self.TITLE,
+            "version": self.VERSION,
+            "debug": self.DEBUG,
+            "description": self.DESCRIPTION,
+            "docs_url": self.DOCS_URL,
+            "openapi_url": self.OPENAPI_URL,
+            "redoc_url": self.REDOC_URL,
+        }
 
 
 settings = Settings()

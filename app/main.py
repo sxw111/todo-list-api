@@ -1,14 +1,22 @@
-from fastapi import FastAPI
+from typing import AsyncGenerator
+from contextlib import asynccontextmanager
 
-from app.api.endpoints import api_router
+from fastapi import FastAPI
+import uvicorn
 from starlette.middleware.cors import CORSMiddleware
 
+from app.api.endpoints import api_router
 from app.core.config import settings
 
-app = FastAPI(
-    title=settings.TITLE,
-    version=settings.VERSION,
-)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator:
+    # Startup
+    yield
+    # Shutdown
+
+
+app = FastAPI(**settings.set_backend_app_attributes, lifespan=lifespan)
 
 app.include_router(api_router)
 
