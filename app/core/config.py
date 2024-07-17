@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
+import os  # change it
 
 class Settings(BaseSettings):
     TITLE: str = "Todo List Application"
@@ -36,12 +36,12 @@ class Settings(BaseSettings):
         "http://0.0.0.0:5173",
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
-        "https://todo-list-api-e4ah.onrender.com"
+        "https://todo-list-api-ek7w.onrender.com"
     ]
     ALLOWED_METHODS: list[str] = ["*"]
     ALLOWED_HEADERS: list[str] = ["*"]
 
-    model_config = SettingsConfigDict(env_file=".env", extra="allow")
+    model_config = SettingsConfigDict(env_file=".env", env=os.environ, extra="allow")
 
     @property
     def set_backend_app_attributes(self) -> dict[str, str | bool | None]:
