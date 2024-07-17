@@ -4,7 +4,11 @@ from sqlalchemy.orm import DeclarativeBase
 from app.core.config import settings
 
 
-DATABASE_URL = "postgresql+asyncpg://postgres:55555@db:5432/todo_list" # change it !
+DATABASE_URL = (
+    f"postgresql+asyncpg://{settings.POSTGRES_USER}:"
+    f"{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST_DOCKER}:"
+    f"{settings.POSTGRES_PORT}/{settings.POSTGRES_DB}"
+)
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 
