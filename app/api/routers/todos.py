@@ -49,7 +49,9 @@ async def get_todos(db: SessionDep, current_user: CurrentUser) -> list[ToDoOut]:
 async def create_todo(
     db: SessionDep, current_user: CurrentUser, todo: ToDoCreate
 ) -> ToDoOut:
-    todo = await create_new_todo(db=db, current_user_id=current_user.id, todo=todo)  # type: ignore
+    todo = await create_new_todo(
+        db=db, current_user_id=current_user.id, todo=todo
+    )  # type: ignore
 
     return todo  # type: ignore
 
