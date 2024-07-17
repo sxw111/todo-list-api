@@ -36,7 +36,7 @@ class Settings(BaseSettings):
         "http://0.0.0.0:5173",
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
-        "https://todo-list-api-e4ah.onrender.com"
+        "https://todo-list-api-02h7.onrender.com"
     ]
     ALLOWED_METHODS: list[str] = ["*"]
     ALLOWED_HEADERS: list[str] = ["*"]
