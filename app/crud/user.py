@@ -24,8 +24,8 @@ async def create_user(db: AsyncSession, user: UserCreate) -> User:
 
 async def read_user_by_id(db: AsyncSession, user_id: int) -> User:
     stmt = select(User).where(User.id == user_id)
-    result = await db.execute(statement=stmt)
-    user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    user = query.scalar_one_or_none()
 
     if not user:
         raise EntityDoesNotExist(f"User with id `{user_id}` does not exist!")
@@ -35,8 +35,8 @@ async def read_user_by_id(db: AsyncSession, user_id: int) -> User:
 
 async def read_user_by_username(db: AsyncSession, username: str) -> User:
     stmt = select(User).where(User.username == username)
-    result = await db.execute(statement=stmt)
-    user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    user = query.scalar_one_or_none()
 
     if not user:
         raise EntityDoesNotExist(f"User with username `{username}` does not exist!")
@@ -46,8 +46,8 @@ async def read_user_by_username(db: AsyncSession, username: str) -> User:
 
 async def read_user_by_email(db: AsyncSession, email: EmailStr) -> User:
     stmt = select(User).where(User.email == email)
-    result = await db.execute(statement=stmt)
-    user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    user = query.scalar_one_or_none()
 
     if not user:
         raise EntityDoesNotExist(f"User with email `{email}` does not exist!")
@@ -57,8 +57,8 @@ async def read_user_by_email(db: AsyncSession, email: EmailStr) -> User:
 
 async def read_users(db: AsyncSession) -> list[User]:
     stmt = select(User)
-    result = await db.execute(statement=stmt)
-    users = result.scalars().all()
+    query = await db.execute(statement=stmt)
+    users = query.scalars().all()
 
     return users  # type: ignore
 
@@ -69,8 +69,8 @@ async def update_user_by_id(
     new_user_data = user_update.model_dump()
 
     stmt = select(User).where(User.id == user_id)
-    result = await db.execute(statement=stmt)
-    update_user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    update_user = query.scalar_one_or_none()
 
     if not update_user:
         raise EntityDoesNotExist(f"User with id `{user_id}` does not exist!")
@@ -96,8 +96,8 @@ async def update_user_by_id(
 
 async def delete_user_by_id(db: AsyncSession, user_id: int) -> str:
     stmt = select(User).where(User.id == user_id)
-    result = await db.execute(statement=stmt)
-    delete_user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    delete_user = query.scalar_one_or_none()
 
     if not delete_user:
         raise EntityDoesNotExist(f"User with id `{user_id}` does not exist!")
@@ -110,8 +110,8 @@ async def delete_user_by_id(db: AsyncSession, user_id: int) -> str:
 
 async def is_email_taken(db: AsyncSession, email: EmailStr) -> bool:
     stmt = select(User).where(User.email == email)
-    result = await db.execute(statement=stmt)
-    user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    user = query.scalar_one_or_none()
 
     if user:
         raise EntityAlreadyExists(f"The email `{email}` is already registered!")
@@ -121,8 +121,8 @@ async def is_email_taken(db: AsyncSession, email: EmailStr) -> bool:
 
 async def is_username_taken(db: AsyncSession, username: str) -> bool:
     stmt = select(User).where(User.username == username)
-    result = await db.execute(statement=stmt)
-    user = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    user = query.scalar_one_or_none()
 
     if user:
         raise EntityAlreadyExists(f"The username `{username}` is already registered!")

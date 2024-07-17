@@ -22,8 +22,8 @@ async def create_new_todo(
 
 async def read_todo_by_id(db: AsyncSession, current_user_id: int, todo_id: int) -> ToDo:
     stmt = select(ToDo).where(ToDo.id == todo_id)
-    result = await db.execute(statement=stmt)
-    todo = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    todo = query.scalar_one_or_none()
 
     if not todo:
         raise EntityDoesNotExist(f"Todo with id `{id}` does not exist!")
@@ -36,8 +36,8 @@ async def read_todo_by_id(db: AsyncSession, current_user_id: int, todo_id: int) 
 
 async def read_todos(db: AsyncSession, current_user_id: int) -> list[ToDo]:
     stmt = select(ToDo).where(ToDo.owner_id == current_user_id)
-    result = await db.execute(statement=stmt)
-    todos = result.scalars().all()
+    query = await db.execute(statement=stmt)
+    todos = query.scalars().all()
 
     if not todos:
         raise EntityDoesNotExist("You don't have todos!")
@@ -51,8 +51,8 @@ async def update_todo_by_id(
     new_todo_data = todo_update.model_dump()
 
     stmt = select(ToDo).where(ToDo.id == todo_id)
-    result = await db.execute(statement=stmt)
-    update_todo = result.scalar_one_or_none()
+    query = await db.execute(statement=stmt)
+    update_todo = query.scalar_one_or_none()
 
     if not update_todo:
         raise EntityDoesNotExist(f"Todo with id `{id}` does not exist!")
