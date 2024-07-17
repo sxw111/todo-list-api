@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-import os  # change it
+
 
 class Settings(BaseSettings):
     TITLE: str = "Todo List Application"
@@ -17,7 +17,6 @@ class Settings(BaseSettings):
     POSTGRES_PORT: int
     POSTGRES_DB: str
     POSTGRES_HOST: str
-    POSTGRES_HOST_DOCKER: str
     DATABASE_URL: str  # change it need validation pstgs url
 
     ACCESS_TOKEN_SECRET_KEY: str
@@ -36,12 +35,11 @@ class Settings(BaseSettings):
         "http://0.0.0.0:5173",
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
-        "https://todo-list-api-7wgb.onrender.com"
     ]
     ALLOWED_METHODS: list[str] = ["*"]
     ALLOWED_HEADERS: list[str] = ["*"]
 
-    model_config = SettingsConfigDict(env_file=".env", env=os.environ, extra="allow")
+    model_config = SettingsConfigDict(env_file=".env", extra="allow")
 
     @property
     def set_backend_app_attributes(self) -> dict[str, str | bool | None]:
