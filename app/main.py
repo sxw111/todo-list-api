@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
     # Shutdown
 
 
-app = FastAPI(**settings.set_backend_app_attributes, lifespan=lifespan)
+app = FastAPI(**settings.set_backend_app_attributes, lifespan=lifespan)  # type: ignore
 
 app.include_router(api_router)
 

@@ -19,7 +19,7 @@ router = APIRouter()
 async def get_users(db: SessionDep) -> list[UserOut]:
     users = await read_users(db=db)
 
-    return users
+    return users  # type: ignore
 
 
 @router.get("/{user_id}", response_model=UserOut, status_code=status.HTTP_200_OK)
@@ -29,7 +29,7 @@ async def get_user(db: SessionDep, user_id: int) -> UserOut:
     except EntityDoesNotExist:
         raise await http_404_exc_id_not_found_request(user_id == user_id)
 
-    return user
+    return user  # type: ignore
 
 
 @router.patch("/", response_model=UserOut, status_code=status.HTTP_200_OK)
@@ -43,7 +43,7 @@ async def update_user(
     except EntityDoesNotExist:
         raise await http_404_exc_id_not_found_request(user_id=current_user.id)
 
-    return updated_user
+    return updated_user  # type: ignore
 
 
 @router.delete("/", status_code=status.HTTP_200_OK)

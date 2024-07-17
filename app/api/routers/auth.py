@@ -38,7 +38,7 @@ async def signup(db: SessionDep, user: UserCreate) -> UserOut:
 
     new_user = await create_user(db=db, user=user)
 
-    return new_user
+    return new_user  # type: ignore
 
 
 @router.post("/signin", response_model=TokenResponse, status_code=status.HTTP_200_OK)
@@ -68,7 +68,7 @@ async def refresh_token(refresh_token: str):
             settings.REFRESH_TOKEN_SECRET_KEY,
             algorithms=[settings.ALGORITHM],
         )
-        user_id: int = payload.get("user_id")
+        user_id: int | None = payload.get("user_id")
         if user_id is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
