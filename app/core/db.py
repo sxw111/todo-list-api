@@ -4,7 +4,11 @@ from sqlalchemy.orm import DeclarativeBase
 from app.core.config import settings
 
 
-DATABASE_URL = str(settings.DATABASE_URL)
+DATABASE_URL = (
+    f"postgresql+asyncpg://{settings.POSTGRES_USER}:"
+    f"{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}:"
+    f"{settings.POSTGRES_PORT}/{settings.POSTGRES_DB}"
+)
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 

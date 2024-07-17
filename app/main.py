@@ -2,7 +2,6 @@ from typing import AsyncGenerator
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
-import uvicorn
 from starlette.middleware.cors import CORSMiddleware
 
 from app.api.endpoints import api_router

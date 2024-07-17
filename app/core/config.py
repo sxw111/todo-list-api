@@ -1,4 +1,3 @@
-from pydantic import PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -13,14 +12,17 @@ class Settings(BaseSettings):
     OPENAPI_URL: str = "/openapi.json"
     REDOC_URL: str = "/redoc"
 
-    DATABASE_URL: PostgresDsn
-    DATABASE_URL_TEST: PostgresDsn
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_PORT: int
+    POSTGRES_DB: str
+    POSTGRES_HOST: str
 
-    ACCESS_SECRET_KEY: str
-    ALGORITHM: str
+    ACCESS_TOKEN_SECRET_KEY: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
-    REFRESH_SECRET_KEY: str
+    REFRESH_TOKEN_SECRET_KEY: str
     REFRESH_TOKEN_EXPIRE_DAYS: int
+    ALGORITHM: str
 
     IS_ALLOWED_CREDENTIALS: bool = True
     ALLOWED_ORIGINS: list[str] = [

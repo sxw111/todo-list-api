@@ -64,7 +64,9 @@ async def signin(
 async def refresh_token(refresh_token: str):
     try:
         payload = jwt.decode(
-            refresh_token, settings.REFRESH_SECRET_KEY, algorithms=[settings.ALGORITHM]
+            refresh_token,
+            settings.REFRESH_TOKEN_SECRET_KEY,
+            algorithms=[settings.ALGORITHM],
         )
         user_id: int = payload.get("user_id")
         if user_id is None:
