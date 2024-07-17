@@ -60,7 +60,7 @@ async def read_users(db: AsyncSession) -> list[User]:
     result = await db.execute(statement=stmt)
     users = result.scalars().all()
 
-    return users
+    return users  # type: ignore
 
 
 async def update_user_by_id(

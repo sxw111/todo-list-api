@@ -1625,6 +1625,42 @@ shellingham = ">=1.3.0"
 typing-extensions = ">=3.7.4.3"
 
 [[package]]
+name = "types-passlib"
+version = "1.7.7.20240327"
+description = "Typing stubs for passlib"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-passlib-1.7.7.20240327.tar.gz", hash = "sha256:4cce6a1a3a6afee9fc4728b4d9784300764ac2be747f5bcc01646d904b85f4bb"},
+    {file = "types_passlib-1.7.7.20240327-py3-none-any.whl", hash = "sha256:3a3b7f4258b71034d2e2f4f307d6810f9904f906cdf375514c8bdbdb28a4ad23"},
+]
+
+[[package]]
+name = "types-pyasn1"
+version = "0.6.0.20240402"
+description = "Typing stubs for pyasn1"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-pyasn1-0.6.0.20240402.tar.gz", hash = "sha256:5d54dcb33f69dd269071ca098e923ac20c5f03c814631fa7f3ed9ee035a5da3a"},
+    {file = "types_pyasn1-0.6.0.20240402-py3-none-any.whl", hash = "sha256:848d01e7313c200acc035a8b3d377fe7b2aecbe77f2be49eb160a7f82835aaaf"},
+]
+
+[[package]]
+name = "types-python-jose"
+version = "3.3.4.20240106"
+description = "Typing stubs for python-jose"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-python-jose-3.3.4.20240106.tar.gz", hash = "sha256:b18cf8c5080bbfe1ef7c3b707986435d9efca3e90889acb6a06f65e06bc3405a"},
+    {file = "types_python_jose-3.3.4.20240106-py3-none-any.whl", hash = "sha256:b515a6c0c61f5e2a53bc93e3a2b024cbd42563e2e19cbde9fd1c2cc2cfe77ccc"},
+]
+
+[package.dependencies]
+types-pyasn1 = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1963,4 +1999,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "656e818344c1489b666f513be16e745497ae457f121206de124165595a40b2f9"
+content-hash = "0afb7881200df87a1cf2e6ff00d68d1ff9c3a773c1f1830265bec5363af8b49e"

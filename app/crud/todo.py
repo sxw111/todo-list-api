@@ -42,7 +42,7 @@ async def read_todos(db: AsyncSession, current_user_id: int) -> list[ToDo]:
     if not todos:
         raise EntityDoesNotExist("You don't have todos!")
 
-    return todos
+    return todos  # type: ignore
 
 
 async def update_todo_by_id(
