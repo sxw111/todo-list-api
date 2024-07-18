@@ -6,6 +6,6 @@ exclude =
     __init__.py,
     .venv,
     .pytest_cache,
-    alembic/versions/
+    migrations/versions/
 
     
