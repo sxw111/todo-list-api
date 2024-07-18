@@ -1,25 +1,18 @@
-from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 
 from app.api.deps import SessionDep
 from app.core.config import settings
 from app.core.security import create_access_token, create_refresh_token
-from app.crud.user import (
-    authenticate,
-    create_user,
-    is_email_taken,
-    is_username_taken,
-)
+from app.crud.user import (authenticate, create_user, is_email_taken,
+                           is_username_taken)
 from app.models.schemas.jwt_token import TokenResponse
 from app.models.schemas.user import UserCreate, UserOut
 from app.utilities.exceptions.database import EntityAlreadyExists
 from app.utilities.exceptions.http.exc_400 import (
-    http_400_exc_bad_email_request,
-    http_400_exc_bad_username_request,
-    http_exc_400_credentials_bad_signup_request,
-)
-
+    http_400_exc_bad_email_request, http_400_exc_bad_username_request,
+    http_exc_400_credentials_bad_signup_request)
 
 router = APIRouter()
 

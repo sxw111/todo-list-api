@@ -24,6 +24,8 @@ mypy = "^1.10.1"
 flake8 = "^7.1.0"
 types-python-jose = "^3.3.4.20240106"
 types-passlib = "^1.7.7.20240327"
+pre-commit = "^3.7.1"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]

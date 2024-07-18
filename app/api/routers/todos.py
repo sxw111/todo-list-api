@@ -1,22 +1,16 @@
 from fastapi import APIRouter, status
 
 from app.api.deps import CurrentUser, SessionDep
-from app.crud.todo import (
-    create_new_todo,
-    delete_todo_by_id,
-    read_todo_by_id,
-    read_todos,
-    update_todo_by_id,
-)
+from app.crud.todo import (create_new_todo, delete_todo_by_id, read_todo_by_id,
+                           read_todos, update_todo_by_id)
 from app.models.schemas.todo import ToDoCreate, ToDoOut, ToDoUpdate
 from app.utilities.exceptions.access import AccessDenied
 from app.utilities.exceptions.database import EntityDoesNotExist
-from app.utilities.exceptions.http.exc_403 import http_403_exc_access_denied_request
+from app.utilities.exceptions.http.exc_403 import \
+    http_403_exc_access_denied_request
 from app.utilities.exceptions.http.exc_404 import (
     http_404_exc_todo_id_not_found_request,
-    http_404_exc_todos_not_found_request,
-)
-
+    http_404_exc_todos_not_found_request)
 
 router = APIRouter()
 
