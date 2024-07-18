@@ -1,0 +1,10 @@
+{
+    "editor.fontSize": 15,
+    "terminal.integrated.fontSize": 15,
+    "files.exclude": {
+        "**/__init__.py": true,
+        "**/__pycache__": true,
+        "**/.venv": true,
+        "**/.pytest_cache": true
+    }
+}
