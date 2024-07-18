@@ -6,8 +6,7 @@ from sqlalchemy.future import select
 from app.core.security import get_password_hash, verify_password
 from app.models.db.models import User
 from app.models.schemas.user import UserCreate, UserUpdate
-from app.utilities.exceptions.database import (EntityAlreadyExists,
-                                               EntityDoesNotExist)
+from app.utilities.exceptions.database import EntityAlreadyExists, EntityDoesNotExist
 from app.utilities.exceptions.password import PasswordDoesNotMatch
 
 

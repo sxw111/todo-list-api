@@ -1,12 +1,15 @@
 from fastapi import APIRouter, status
 
 from app.api.deps import CurrentUser, SessionDep
-from app.crud.user import (delete_user_by_id, read_user_by_id, read_users,
-                           update_user_by_id)
+from app.crud.user import (
+    delete_user_by_id,
+    read_user_by_id,
+    read_users,
+    update_user_by_id,
+)
 from app.models.schemas.user import UserOut, UserUpdate
 from app.utilities.exceptions.database import EntityDoesNotExist
-from app.utilities.exceptions.http.exc_404 import \
-    http_404_exc_id_not_found_request
+from app.utilities.exceptions.http.exc_404 import http_404_exc_id_not_found_request
 
 router = APIRouter()
 
