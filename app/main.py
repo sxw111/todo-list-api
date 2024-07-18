@@ -1,4 +1,3 @@
-import logging
 from typing import AsyncGenerator
 from contextlib import asynccontextmanager
 
@@ -7,10 +6,6 @@ from starlette.middleware.cors import CORSMiddleware
 
 from app.api.endpoints import api_router
 from app.core.config import settings
-
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
