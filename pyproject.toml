@@ -14,17 +14,16 @@ alembic = "^1.13.2"
 passlib = {version = "^1.7.4", extras = ["bcrypt"]}
 python-jose = {version = "^3.3.0", extras = ["cryptography"]}
 asyncpg = "^0.29.0"
-pytest = "^8.2.2"
-pytest-asyncio = "^0.23.7"
 asgi-lifespan = "^2.1.0"
 
 [tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+pytest-asyncio = "^0.23.7"
 black = "^24.4.2"
 mypy = "^1.10.1"
 flake8 = "^7.1.0"
 types-python-jose = "^3.3.4.20240106"
 types-passlib = "^1.7.7.20240327"
-pre-commit = "^3.7.1"
 
 [build-system]
 requires = ["poetry-core"]
