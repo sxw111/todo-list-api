@@ -1,3 +1,4 @@
+from pydantic import PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,7 +19,7 @@ class Settings(BaseSettings):
     POSTGRES_DB: str
     POSTGRES_DB_TEST: str
     POSTGRES_HOST: str
-    DATABASE_URL: str  # change it need validation pstgs url
+    DATABASE_URL: PostgresDsn
 
     ACCESS_TOKEN_SECRET_KEY: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
