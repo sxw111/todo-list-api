@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_PORT: int
     POSTGRES_DB: str
+    POSTGRES_DB_TEST: str
     POSTGRES_HOST: str
     DATABASE_URL: str  # change it need validation pstgs url
 
