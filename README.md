@@ -20,3 +20,4 @@ This project is an asynchronous todo list application built using FastAPI, a mod
 - SQLAlchemy with async support
 - Alembic for migrations
 - Asynchronous PostgreSQL
+- Docker and docker-compose
