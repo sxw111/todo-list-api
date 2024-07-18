@@ -8,7 +8,7 @@ from sqlalchemy.future import select
 
 from app.core.config import settings
 from app.core.db import async_session
-from app.models.db.models import User
+from app.models.db.user import User
 from app.models.schemas.jwt_token import TokenData
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/signin")

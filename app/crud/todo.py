@@ -2,7 +2,7 @@ from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.models.db.models import ToDo
+from app.models.db.todo import ToDo
 from app.models.schemas.todo import ToDoCreate, ToDoUpdate
 from app.utilities.exceptions.access import AccessDenied
 from app.utilities.exceptions.database import EntityDoesNotExist
