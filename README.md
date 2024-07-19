@@ -30,19 +30,13 @@ This project is an asynchronous todo list application built using FastAPI, a mod
    cd todo-list-api
    ```
 
-2. Build the Docker image:
+2. Build and Run the Docker Containers:
    
    ```bash
-   docker build -t todo-list-api .
+   docker-compose up --build
    ```
 
-3. Run the Docker container:
-   
-   ```bash
-   docker run -d -p 8000:8000 todo-list-api
-   ```
-
-4. Open your browser and go to http://localhost:8000/docs to view the Swagger documentation and interact with the API.
+3. Open your browser and go to http://localhost:8000/docs to view the Swagger documentation and interact with the API.
 
 ## Project Structure
 
