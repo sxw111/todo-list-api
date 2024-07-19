@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "todo-list-api"
 version = "0.0.1"
-description = "Todo list api"
+description = "To-Do List API built with FastAPI"
 authors = ["sxw111"]
 readme = "README.md"
 
@@ -38,7 +38,7 @@ exclude = '''
         \.git
         | \.mypy_cache
         | \.venv
-        | alembic/versions
+        | migrations/versions
     )/
 '''
 include = '\.pyi?$'
