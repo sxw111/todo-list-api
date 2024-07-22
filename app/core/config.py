@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    TITLE: str = "Todo List Application"
+    TITLE: str = "Todo-List-API"
     VERSION: str = "0.0.1"
     TIMEZONE: str = "UTC"
     DESCRIPTION: str | None = None
