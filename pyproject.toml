@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "todo-list-api"
+name = "Todo-List-API"
 version = "0.0.1"
 description = "To-Do List API built with FastAPI"
 authors = ["sxw111"]
